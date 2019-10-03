@@ -20,19 +20,19 @@ The process goes like this:
 
 - Download the linux kernel and extract it. 
 - Modify the kernel
--- Add the system call entry to arch/x86/entry/syscalls/syscall_64.tbl (assuming a 64 bit version)
--- Write the C code that implements this function. kernel/sys.c works. 
-You can also create your own C file (make sure you add it to the build). 
-Look for SYSCALL_DEFINE macro. 
--- Create a declaration for your system call in include/linux/syscalls.h . Remember, it's only the declaration. The function is defined in the step above.
--- Compile the kernel, generate the image. 
-- Test the new system call
--- Create a C program that calls the new system call. 
+    - Add the system call entry to arch/x86/entry/syscalls/syscall_64.tbl (assuming a 64 bit version)
+    - Write the C code that implements this function. kernel/sys.c works. 
+- You can also create your own C file (make sure you add it to the build). 
+    - Look for SYSCALL_DEFINE macro. 
+- Create a declaration for your system call in include/linux/syscalls.h . Remember, it's only the declaration. The function is defined in the step above.
+- Compile the kernel, generate the image. 
+- Test the new system call: create a C program that calls the new system call. 
 
 ## Pro-tip
 
 - You need a machine running Linux for this project. Windows will not help you. 
 - You don't have to replace Windows with Linux if you don't want to, use a virtual machine instead. 
+- It is ok to follow a (slightly) different path. For example, you can add your function to sys.c or add a new file. It's all good (as long as it works).
 - I recommend using qemm since it is free, lightweight and easy to configure. Find a tutorial that uses qemm. Those are the best.
 - Really, there's a ton of tutorials. Go read them. 
 
@@ -44,8 +44,7 @@ Look for SYSCALL_DEFINE macro.
 - Add the files you changed to the repo, with its directories and all.
 - Send me a pull request (again, see the Github tutorial.) I will give you feedback and grade you based on your pull requests.
 
-
 ## Before I go...
 
-Yes, this is a bit complicated, but I know you can do this. Yes, I do. You are the very best, my little ones. YOU CAN DO THIS. 
+Yes, this is a bit complicated, but I know you can do this. Yes, I know this. You are the very best, my little ones. YOU CAN DO THIS. 
 
