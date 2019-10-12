@@ -11,6 +11,6 @@ includes/linux/syscalls.h
 ## compile:
 gcc -o test test.c 
 ## run:
-./test)
+./test
 
 
