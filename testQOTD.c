@@ -5,7 +5,7 @@
 
 int main()
 {
-	long int code = syscall(436);
-	printf("System call #436 called for QOTD and returned: %ld\n", code);
+	long int code = syscall(548);
+	printf("System call #548 called for QOTD and returned: %ld\n", code);
 	return 0;
 }
