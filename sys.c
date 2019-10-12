@@ -5,6 +5,10 @@
  *  Copyright (C) 1991, 1992  Linus Torvalds
  */
 
+/* My inclusions */
+#include <linux/random.h>
+/* End my inclusions */
+
 #include <linux/export.h>
 #include <linux/mm.h>
 #include <linux/utsname.h>
@@ -2650,18 +2654,24 @@ COMPAT_SYSCALL_DEFINE1(sysinfo, struct compat_sysinfo __user *, info)
 }
 #endif /* CONFIG_COMPAT */
 
-void qotd()
+long qotd(void)
 {
-	char* q1 = "Some people truly never go crazy. What truly horrible lives they must lead.\n -Charles Bukowski"
-	char* q2 = "Winning isn't everything, but wanting to win is. \n -Vince Lombardi"
-	char* q3 = "You can't use up creativity. The more you use, the more you have. \n -Maya Angelou"
-	char* q4 = "Would I rather be feared or loved? Easy. Both. I want people to be afraid of how much they love me. \n -Michael Scott"
-	char* q5 = "A wise man can learn more from a foolish question than a fool can learn from a wise answer. \n -Bruce Lee"
+	char* q1 = "Some people truly never go crazy. What truly horrible lives they must lead.\n -Charles Bukowski";
+	char* q2 = "Winning isn't everything, but wanting to win is. \n -Vince Lombardi";
+	char* q3 = "You can't use up creativity. The more you use, the more you have. \n -Maya Angelou";
+	char* q4 = "Would I rather be feared or loved? Easy. Both. I want people to be afraid of how much they love me. \n -Michael Scott";
+	char* q5 = "A wise man can learn more from a foolish question than a fool can learn from a wise answer. \n -Bruce Lee";
 
 	char* quotes[] = {q1, q2, q3, q4, q5};
-	int randNum = rand() % 5;
+	int randNum;
+	get_random_bytes(&randNum, sizeof(randNum));
+		
+	if(randNum < 0) {
+		randNum = -randNum;
+	}
 	
-	printf(quotes[randNum]);
+	printk(quotes[randNum % 5]);
+	return 0;
 }
 
 

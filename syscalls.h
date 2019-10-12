@@ -1422,6 +1422,6 @@ long compat_ksys_semtimedop(int semid, struct sembuf __user *tsems,
 			    const struct old_timespec32 __user *timeout);
 
 /*My SYS_CALL */
-void qotd();
+long qotd(void);
 
 #endif
